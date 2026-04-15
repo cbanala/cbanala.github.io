@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel — Chethan Banala</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 32px 24px 48px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto 36px;
+      opacity: 0;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid #7c3aed;
+      color: #a78bfa;
+      text-decoration: none;
+      font-size: 1rem;
+      flex-shrink: 0;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background: #7c3aed;
+      color: #fff;
+    }
+
+    .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      letter-spacing: 4px;
+      background: linear-gradient(90deg, #a78bfa, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .tile {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      opacity: 0;
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .tile:hover {
+      transform: translateY(-4px) scale(1.02);
+      filter: brightness(1.1);
+    }
+
+    .tile-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .tile-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 60%);
+    }
+
+    .tile-name {
+      position: absolute;
+      bottom: 14px;
+      left: 16px;
+      right: 16px;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      line-height: 1.3;
+    }
+
+    .tile-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.9rem;
+      transition: background 0.2s ease;
+    }
+
+    .tile:hover .tile-play {
+      background: rgba(124, 58, 237, 0.7);
+    }
+
+    .tile-bg {
+      background-color: #0a0a1a;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="index.html" class="back-btn">←</a>
+    <h1 class="page-title">Travel</h1>
+  </div>
+
+  <div class="grid">
+
+    <a class="tile" href="https://www.youtube.com/watch?v=ahh8zx3plT8" target="_blank" rel="noopener">
+      <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/ahh8zx3plT8/maxresdefault.jpg')"></div>
+      <div class="tile-overlay"></div>
+      <div class="tile-play">▶</div>
+      <div class="tile-name">Florida</div>
+    </a>
+
+    <a class="tile" href="https://www.youtube.com/watch?v=iYOLJv7xOkc" target="_blank" rel="noopener">
+      <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/iYOLJv7xOkc/maxresdefault.jpg')"></div>
+      <div class="tile-overlay"></div>
+      <div class="tile-play">▶</div>
+      <div class="tile-name">Norwegian Cruise Trip</div>
+    </a>
+
+    <a class="tile" href="https://www.youtube.com/watch?v=OG1O2_k6Pdw" target="_blank" rel="noopener">
+      <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/OG1O2_k6Pdw/maxresdefault.jpg')"></div>
+      <div class="tile-overlay"></div>
+      <div class="tile-play">▶</div>
+      <div class="tile-name">Dustin Ferreira · June 30, 2023</div>
+    </a>
+
+    <a class="tile" href="https://www.youtube.com/watch?v=Qid4ksnaNl8" target="_blank" rel="noopener">
+      <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/Qid4ksnaNl8/maxresdefault.jpg')"></div>
+      <div class="tile-overlay"></div>
+      <div class="tile-play">▶</div>
+      <div class="tile-name">Alaska</div>
+    </a>
+
+    <a class="tile" href="https://www.youtube.com/watch?v=krZTDwz404E" target="_blank" rel="noopener">
+      <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/krZTDwz404E/maxresdefault.jpg')"></div>
+      <div class="tile-overlay"></div>
+      <div class="tile-play">▶</div>
+      <div class="tile-name">U.S. Virgin Islands</div>
+    </a>
+
+    <a class="tile" href="https://www.youtube.com/watch?v=MgSiiegiSAo" target="_blank" rel="noopener">
+      <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/MgSiiegiSAo/maxresdefault.jpg')"></div>
+      <div class="tile-overlay"></div>
+      <div class="tile-play">▶</div>
+      <div class="tile-name">Mexico City</div>
+    </a>
+
+  </div>
+
+  <script type="module">
+    import { animate, stagger } from 'https://cdn.jsdelivr.net/npm/motion@11/+esm';
+
+    animate('.header', { opacity: [0, 1], y: [-20, 0] }, { duration: 0.6, easing: 'ease-out' });
+
+    animate('.tile', { opacity: [0, 1], y: [30, 0] }, {
+      duration: 0.5,
+      delay: stagger(0.08, { start: 0.2 }),
+      easing: 'ease-out',
+    });
+  </script>
+
+</body>
+</html>
