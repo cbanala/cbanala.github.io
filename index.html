@@ -135,7 +135,26 @@
     </nav>
   </main>
   <script type="module">
-    /* animations go here in Task 4 */
+    import { animate, stagger } from 'https://cdn.jsdelivr.net/npm/motion@latest/+esm';
+
+    // Name slides up and fades in
+    animate('.name', { opacity: [0, 1], y: [30, 0] }, { duration: 0.7, easing: 'ease-out' });
+
+    // Tagline fades in after name
+    animate('.tagline', { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, delay: 0.2, easing: 'ease-out' });
+
+    // Divider scales in from left
+    animate('.divider', { opacity: [0, 1], scaleX: [0, 1] }, { duration: 0.5, delay: 0.4, easing: 'ease-out' });
+
+    // Bio fades in
+    animate('.bio', { opacity: [0, 1], y: [15, 0] }, { duration: 0.6, delay: 0.55, easing: 'ease-out' });
+
+    // Link buttons stagger in
+    animate('.link-btn', { opacity: [0, 1], y: [20, 0] }, {
+      duration: 0.5,
+      delay: stagger(0.1, { start: 0.7 }),
+      easing: 'ease-out',
+    });
   </script>
 </body>
 </html>
