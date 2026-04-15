@@ -9,107 +9,107 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  font-family: 'Inter', sans-serif;
-  padding: 24px;
-}
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 24px;
+    }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 480px;
-  width: 100%;
-  gap: 0;
-}
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 480px;
+      width: 100%;
+    }
 
-.name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3rem, 12vw, 5.5rem);
-  letter-spacing: 4px;
-  line-height: 1;
-  background: linear-gradient(90deg, #a78bfa, #ec4899);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 10px;
-  opacity: 0;
-}
+    .name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 12vw, 5.5rem);
+      letter-spacing: 4px;
+      line-height: 1;
+      background: linear-gradient(90deg, #a78bfa, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+      opacity: 0;
+    }
 
-.tagline {
-  font-size: 0.75rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #a78bfa;
-  margin-bottom: 18px;
-  opacity: 0;
-}
+    .tagline {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #a78bfa;
+      margin-bottom: 18px;
+      opacity: 0;
+    }
 
-.divider {
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, #7c3aed, #ec4899);
-  border-radius: 2px;
-  margin-bottom: 20px;
-  opacity: 0;
-  transform-origin: left center;
-}
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #7c3aed, #ec4899);
+      border-radius: 2px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform-origin: left center;
+    }
 
-.bio {
-  font-size: 0.9rem;
-  line-height: 1.7;
-  color: #cbd5e1;
-  margin-bottom: 32px;
-  opacity: 0;
-}
+    .bio {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+      margin-bottom: 32px;
+      opacity: 0;
+    }
 
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-}
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
 
-.link-btn {
-  display: block;
-  padding: 14px 24px;
-  border-radius: 50px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  text-decoration: none;
-  color: #ffffff;
-  letter-spacing: 0.5px;
-  transition: transform 0.2s ease, filter 0.2s ease;
-  opacity: 0;
-}
+    .link-btn {
+      display: block;
+      padding: 14px 24px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: transform 0.2s ease, filter 0.2s ease;
+      opacity: 0;
+    }
 
-.link-btn:hover {
-  transform: translateY(-2px) scale(1.02);
-  filter: brightness(1.15);
-}
+    .link-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      filter: brightness(1.15);
+    }
 
-.link-btn.youtube {
-  background: linear-gradient(90deg, #7c3aed, #ec4899);
-}
+    .link-btn.youtube {
+      background: linear-gradient(90deg, #7c3aed, #ec4899);
+    }
 
-.link-btn.instagram {
-  background: linear-gradient(90deg, #ec4899, #f97316);
-}
+    .link-btn.instagram {
+      background: linear-gradient(90deg, #ec4899, #f97316);
+    }
 
-.link-btn.short-film {
-  background: linear-gradient(90deg, #0ea5e9, #7c3aed);
-}
+    .link-btn.short-film {
+      background: linear-gradient(90deg, #0ea5e9, #7c3aed);
+    }
   </style>
 </head>
 <body>
