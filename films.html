@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Short Films — Chethan Banala</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 32px 24px 48px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto 40px;
+      opacity: 0;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid #f97316;
+      color: #f97316;
+      text-decoration: none;
+      font-size: 1rem;
+      flex-shrink: 0;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background: #f97316;
+      color: #fff;
+    }
+
+    .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      letter-spacing: 4px;
+      background: linear-gradient(90deg, #f97316, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 0 auto 48px;
+      opacity: 0;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #ec4899;
+      margin-bottom: 16px;
+      padding-left: 2px;
+    }
+
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, #f97316, transparent);
+      margin-bottom: 20px;
+      opacity: 0.3;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .tile {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .tile:hover {
+      transform: translateY(-4px) scale(1.02);
+      filter: brightness(1.1);
+    }
+
+    .tile-bg {
+      position: absolute;
+      inset: 0;
+      background-color: #0a0a1a;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .tile-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 60%);
+    }
+
+    .tile-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .badge-trailer {
+      background: rgba(236, 72, 153, 0.85);
+      color: #fff;
+    }
+
+    .badge-film {
+      background: rgba(249, 115, 22, 0.85);
+      color: #fff;
+    }
+
+    .tile-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1rem;
+      transition: background 0.2s ease;
+    }
+
+    .tile:hover .tile-play {
+      background: rgba(249, 115, 22, 0.7);
+    }
+
+    .tile-name {
+      position: absolute;
+      bottom: 14px;
+      left: 16px;
+      right: 16px;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      line-height: 1.3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="index.html" class="back-btn">←</a>
+    <h1 class="page-title">Short Films</h1>
+  </div>
+
+  <!-- TRAILERS -->
+  <div class="section" id="trailers">
+    <div class="section-label">Trailers</div>
+    <div class="section-divider"></div>
+    <div class="grid">
+
+      <a class="tile" href="https://www.youtube.com/watch?v=G3EHY0Ko5UA" target="_blank" rel="noopener">
+        <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/G3EHY0Ko5UA/maxresdefault.jpg')"></div>
+        <div class="tile-overlay"></div>
+        <div class="tile-badge badge-trailer">Trailer</div>
+        <div class="tile-play">▶</div>
+        <div class="tile-name">The Note</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- FULL FILMS -->
+  <div class="section" id="full-films">
+    <div class="section-label">Full Films</div>
+    <div class="section-divider"></div>
+    <div class="grid">
+
+      <a class="tile" href="https://www.youtube.com/watch?v=UIhZE1KRTj4" target="_blank" rel="noopener">
+        <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/UIhZE1KRTj4/maxresdefault.jpg')"></div>
+        <div class="tile-overlay"></div>
+        <div class="tile-badge badge-film">Full Film</div>
+        <div class="tile-play">▶</div>
+        <div class="tile-name">The Note</div>
+      </a>
+
+    </div>
+  </div>
+
+  <script type="module">
+    import { animate, stagger } from 'https://cdn.jsdelivr.net/npm/motion@11/+esm';
+
+    animate('.header', { opacity: [0, 1], y: [-20, 0] }, { duration: 0.6, easing: 'ease-out' });
+
+    animate('.section', { opacity: [0, 1], y: [30, 0] }, {
+      duration: 0.5,
+      delay: stagger(0.15, { start: 0.3 }),
+      easing: 'ease-out',
+    });
+  </script>
+
+</body>
+</html>
