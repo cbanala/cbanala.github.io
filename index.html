@@ -206,6 +206,26 @@
       color: #ff6b6b;
     }
 
+    /* ── Mobile layout ── */
+    @media (max-width: 640px) {
+      body { padding: 16px; }
+
+      .container { gap: 0; }
+
+      .link-btn {
+        padding: 16px 24px;
+        font-size: 1rem;
+      }
+
+      .follow-circle,
+      .subscribe-circle {
+        bottom: 16px;
+      }
+
+      .follow-circle { left: 16px; }
+      .subscribe-circle { right: 16px; }
+    }
+
     @keyframes bell-ring {
       0%, 70%, 100% { transform: rotate(0deg); }
       73% { transform: rotate(20deg); }

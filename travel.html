@@ -184,6 +184,20 @@
       border-radius: 16px;
     }
 
+    /* ── Mobile: single-column stacked layout ── */
+    @media (max-width: 640px) {
+      body { padding: 20px 16px 40px; }
+
+      .header { margin-bottom: 24px; gap: 12px; }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .tile-name { font-size: 0.9rem; }
+    }
+
     /* Fullscreen button overlay */
     .fullscreen-btn {
       position: absolute;

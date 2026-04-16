@@ -238,6 +238,22 @@
     /* Hide native fullscreen button from video controls */
     video::-webkit-media-controls-fullscreen-button { display: none; }
 
+    /* ── Mobile: single-column stacked layout ── */
+    @media (max-width: 640px) {
+      body { padding: 20px 16px 40px; }
+
+      .header { margin-bottom: 24px; gap: 12px; }
+
+      .section { margin-bottom: 36px; }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .tile-name { font-size: 0.9rem; }
+    }
+
     /* iOS pseudo-fullscreen fallback */
     .tile.pseudo-fullscreen {
       position: fixed !important;
