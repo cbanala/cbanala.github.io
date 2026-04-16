@@ -198,43 +198,6 @@
       .tile-name { font-size: 0.9rem; }
     }
 
-    /* Fullscreen button overlay */
-    .fullscreen-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(4px);
-      border: none;
-      color: #fff;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-      transition: background 0.2s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .fullscreen-btn:hover { background: rgba(124,58,237,0.8); }
-
-    /* Hide native fullscreen button from video controls */
-    video::-webkit-media-controls-fullscreen-button { display: none; }
-
-    /* iOS pseudo-fullscreen fallback */
-    .tile.pseudo-fullscreen {
-      position: fixed !important;
-      inset: 0 !important;
-      width: 100% !important;
-      height: 100svh !important;
-      z-index: 9999 !important;
-      border-radius: 0 !important;
-      aspect-ratio: unset !important;
-    }
   </style>
 </head>
 <body>
@@ -320,42 +283,6 @@
       easing: 'ease-out',
     });
 
-    const expandIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>';
-    const compressIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="10" y1="14" x2="3" y2="21"/><line x1="21" y1="3" x2="14" y2="10"/></svg>';
-
-    function addFullscreenBtn(tile) {
-      const btn = document.createElement('button');
-      btn.className = 'fullscreen-btn';
-      btn.innerHTML = expandIcon;
-      btn.title = 'Fullscreen';
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-
-        if (tile.classList.contains('pseudo-fullscreen')) {
-          tile.classList.remove('pseudo-fullscreen');
-          btn.innerHTML = expandIcon;
-          document.body.style.overflow = '';
-          return;
-        }
-
-        const media = tile.querySelector('iframe, video');
-        const el = media || tile;
-
-        if (el.requestFullscreen) {
-          el.requestFullscreen();
-        } else if (el.webkitEnterFullscreen) {
-          el.webkitEnterFullscreen();
-        } else if (el.webkitRequestFullscreen) {
-          el.webkitRequestFullscreen();
-        } else {
-          tile.classList.add('pseudo-fullscreen');
-          btn.innerHTML = compressIcon;
-          document.body.style.overflow = 'hidden';
-        }
-      });
-      tile.appendChild(btn);
-    }
-
     document.querySelectorAll('.tile').forEach(tile => {
       tile.addEventListener('click', () => {
         if (tile.classList.contains('playing')) return;
@@ -370,7 +297,6 @@
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
             allowfullscreen>
           </iframe>`;
-          addFullscreenBtn(tile);
         } else if (type === 'own' && src) {
           tile.classList.add('playing');
           tile.innerHTML = `<video
@@ -380,7 +306,6 @@
             playsinline
             x-webkit-airplay="allow">
           </video>`;
-          addFullscreenBtn(tile);
         }
       });
     });
