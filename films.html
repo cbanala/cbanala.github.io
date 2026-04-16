@@ -140,6 +140,7 @@
     .badge-trailer { background: rgba(236, 72, 153, 0.85); color: #fff; }
     .badge-film { background: rgba(249, 115, 22, 0.85); color: #fff; }
     .badge-locked { background: rgba(0,0,0,0.6); color: #a78bfa; border: 1px solid #a78bfa; }
+    .badge-coming-soon { background: rgba(0,0,0,0.6); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
 
     .tile-play {
       position: absolute;
@@ -367,8 +368,10 @@
       </div>
 
       <div class="tile tile-coming-soon" data-type="own" data-src="">
-        <div class="coming-soon-icon">🎬</div>
-        <div class="coming-soon-text">Your trailer coming soon</div>
+        <div class="tile-bg" style="background-image: url('silent-pour-poster.png');"></div>
+        <div class="tile-overlay"></div>
+        <div class="tile-badge badge-coming-soon">Coming Soon</div>
+        <div class="tile-name">Silent Pour</div>
       </div>
 
     </div>
