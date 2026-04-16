@@ -75,20 +75,26 @@
       overflow: hidden;
       aspect-ratio: 16 / 9;
       cursor: pointer;
-      text-decoration: none;
       display: block;
       opacity: 0;
       transition: transform 0.25s ease, filter 0.25s ease;
+      background: #0a0a1a;
     }
 
-    .tile:hover {
+    .tile:hover:not(.playing) {
       transform: translateY(-4px) scale(1.02);
       filter: brightness(1.1);
+    }
+
+    .tile.playing {
+      cursor: default;
+      aspect-ratio: 16 / 9;
     }
 
     .tile-bg {
       position: absolute;
       inset: 0;
+      background-color: #0a0a1a;
       background-size: cover;
       background-position: center;
     }
@@ -116,8 +122,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -60%);
-      width: 40px;
-      height: 40px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: rgba(255,255,255,0.15);
       backdrop-filter: blur(4px);
@@ -125,18 +131,57 @@
       align-items: center;
       justify-content: center;
       color: #fff;
-      font-size: 0.9rem;
-      transition: background 0.2s ease;
+      font-size: 1rem;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
     .tile:hover .tile-play {
-      background: rgba(124, 58, 237, 0.7);
+      background: rgba(124, 58, 237, 0.8);
+      transform: translate(-50%, -60%) scale(1.1);
     }
 
-    .tile-bg {
-      background-color: #0a0a1a;
-      background-size: cover;
-      background-position: center;
+    /* Coming Soon tile */
+    .tile-coming-soon {
+      border: 2px dashed rgba(167, 139, 250, 0.3);
+      background: rgba(124, 58, 237, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: default;
+    }
+
+    .tile-coming-soon:hover {
+      transform: none;
+      filter: none;
+    }
+
+    .coming-soon-icon {
+      font-size: 1.6rem;
+      opacity: 0.5;
+    }
+
+    .coming-soon-text {
+      color: #a78bfa;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.6;
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    /* Inline video player */
+    .tile iframe,
+    .tile video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 16px;
     }
   </style>
 </head>
@@ -149,61 +194,67 @@
 
   <div class="grid">
 
-    <a class="tile" href="https://www.youtube.com/watch?v=ahh8zx3plT8" target="_blank" rel="noopener">
+    <div class="tile" data-type="youtube" data-id="ahh8zx3plT8">
       <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/ahh8zx3plT8/maxresdefault.jpg')"></div>
       <div class="tile-overlay"></div>
       <div class="tile-play">▶</div>
       <div class="tile-name">Destin Florida 2025</div>
-    </a>
+    </div>
 
-    <a class="tile" href="https://www.youtube.com/watch?v=iYOLJv7xOkc" target="_blank" rel="noopener">
+    <div class="tile" data-type="youtube" data-id="iYOLJv7xOkc">
       <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/iYOLJv7xOkc/maxresdefault.jpg')"></div>
       <div class="tile-overlay"></div>
       <div class="tile-play">▶</div>
       <div class="tile-name">Norwegian Cruise Trip</div>
-    </a>
+    </div>
 
-    <a class="tile" href="https://www.youtube.com/watch?v=OG1O2_k6Pdw" target="_blank" rel="noopener">
+    <div class="tile" data-type="youtube" data-id="OG1O2_k6Pdw">
       <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/OG1O2_k6Pdw/maxresdefault.jpg')"></div>
       <div class="tile-overlay"></div>
       <div class="tile-play">▶</div>
       <div class="tile-name">Destin Florida Trip 2023</div>
-    </a>
+    </div>
 
-    <a class="tile" href="https://www.youtube.com/watch?v=Qid4ksnaNl8" target="_blank" rel="noopener">
+    <div class="tile" data-type="youtube" data-id="Qid4ksnaNl8">
       <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/Qid4ksnaNl8/maxresdefault.jpg')"></div>
       <div class="tile-overlay"></div>
       <div class="tile-play">▶</div>
       <div class="tile-name">Alaska</div>
-    </a>
+    </div>
 
-    <a class="tile" href="https://www.youtube.com/watch?v=krZTDwz404E" target="_blank" rel="noopener">
+    <div class="tile" data-type="youtube" data-id="krZTDwz404E">
       <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/krZTDwz404E/maxresdefault.jpg')"></div>
       <div class="tile-overlay"></div>
       <div class="tile-play">▶</div>
       <div class="tile-name">U.S. Virgin Islands</div>
-    </a>
+    </div>
 
-    <a class="tile" href="https://www.youtube.com/watch?v=MgSiiegiSAo" target="_blank" rel="noopener">
+    <div class="tile" data-type="youtube" data-id="MgSiiegiSAo">
       <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/MgSiiegiSAo/maxresdefault.jpg')"></div>
       <div class="tile-overlay"></div>
       <div class="tile-play">▶</div>
       <div class="tile-name">Mexico City</div>
-    </a>
+    </div>
 
-    <a class="tile" href="https://www.youtube.com/watch?v=bK1vnSpsTaE" target="_blank" rel="noopener">
+    <div class="tile" data-type="youtube" data-id="bK1vnSpsTaE">
       <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/bK1vnSpsTaE/maxresdefault.jpg')"></div>
       <div class="tile-overlay"></div>
       <div class="tile-play">▶</div>
       <div class="tile-name">Paddle Boston</div>
-    </a>
+    </div>
 
-    <a class="tile" href="https://www.youtube.com/watch?v=z4842VZSW_I" target="_blank" rel="noopener">
+    <div class="tile" data-type="youtube" data-id="z4842VZSW_I">
       <div class="tile-bg" style="background-image: url('https://img.youtube.com/vi/z4842VZSW_I/maxresdefault.jpg')"></div>
       <div class="tile-overlay"></div>
       <div class="tile-play">▶</div>
       <div class="tile-name">Bridalveil Falls NH</div>
-    </a>
+    </div>
+
+    <!-- Coming Soon: drop your own video URL in data-src when ready -->
+    <div class="tile tile-coming-soon" data-type="own" data-src="">
+      <div class="coming-soon-icon">🎥</div>
+      <div class="coming-soon-text">Your video coming soon</div>
+    </div>
 
   </div>
 
@@ -211,11 +262,36 @@
     import { animate, stagger } from 'https://cdn.jsdelivr.net/npm/motion@11/+esm';
 
     animate('.header', { opacity: [0, 1], y: [-20, 0] }, { duration: 0.6, easing: 'ease-out' });
-
     animate('.tile', { opacity: [0, 1], y: [30, 0] }, {
       duration: 0.5,
       delay: stagger(0.08, { start: 0.2 }),
       easing: 'ease-out',
+    });
+
+    document.querySelectorAll('.tile').forEach(tile => {
+      tile.addEventListener('click', () => {
+        const type = tile.dataset.type;
+        const id = tile.dataset.id;
+        const src = tile.dataset.src;
+
+        if (type === 'youtube' && id) {
+          tile.classList.add('playing');
+          tile.innerHTML = `<iframe
+            src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+            allowfullscreen>
+          </iframe>`;
+        } else if (type === 'own' && src) {
+          tile.classList.add('playing');
+          tile.innerHTML = `<video
+            src="${src}"
+            controls
+            autoplay
+            playsinline
+            x-webkit-airplay="allow">
+          </video>`;
+        }
+      });
     });
   </script>
 
