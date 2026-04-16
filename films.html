@@ -111,49 +111,6 @@
       cursor: default;
     }
 
-    /* Coming Soon tile */
-    .tile-coming-soon {
-      border: 2px dashed rgba(249, 115, 22, 0.3);
-      background: rgba(249, 115, 22, 0.05);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      cursor: default;
-    }
-
-    .tile-coming-soon:hover {
-      transform: none;
-      filter: none;
-    }
-
-    .coming-soon-icon {
-      font-size: 1.6rem;
-      opacity: 0.5;
-    }
-
-    .coming-soon-text {
-      color: #f97316;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      opacity: 0.6;
-      text-align: center;
-      padding: 0 16px;
-    }
-
-    .tile iframe,
-    .tile video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-      border-radius: 16px;
-    }
-
     .tile-bg {
       position: absolute;
       inset: 0;
@@ -180,23 +137,17 @@
       text-transform: uppercase;
     }
 
-    .badge-trailer {
-      background: rgba(236, 72, 153, 0.85);
-      color: #fff;
-    }
-
-    .badge-film {
-      background: rgba(249, 115, 22, 0.85);
-      color: #fff;
-    }
+    .badge-trailer { background: rgba(236, 72, 153, 0.85); color: #fff; }
+    .badge-film { background: rgba(249, 115, 22, 0.85); color: #fff; }
+    .badge-locked { background: rgba(0,0,0,0.6); color: #a78bfa; border: 1px solid #a78bfa; }
 
     .tile-play {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -60%);
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: rgba(255,255,255,0.15);
       backdrop-filter: blur(4px);
@@ -208,9 +159,7 @@
       transition: background 0.2s ease;
     }
 
-    .tile:hover .tile-play {
-      background: rgba(249, 115, 22, 0.7);
-    }
+    .tile:hover .tile-play { background: rgba(249, 115, 22, 0.7); }
 
     .tile-name {
       position: absolute;
@@ -223,6 +172,177 @@
       letter-spacing: 0.5px;
       line-height: 1.3;
     }
+
+    /* Coming Soon tile */
+    .tile-coming-soon {
+      border: 2px dashed rgba(249, 115, 22, 0.3);
+      background: rgba(249, 115, 22, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: default;
+    }
+
+    .tile-coming-soon:hover { transform: none; filter: none; }
+
+    .coming-soon-icon { font-size: 1.6rem; opacity: 0.5; }
+    .coming-soon-text {
+      color: #f97316;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.6;
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    /* Inline player */
+    .tile iframe,
+    .tile video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 16px;
+    }
+
+    /* Fullscreen button overlay */
+    .fullscreen-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      border: none;
+      color: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .fullscreen-btn:hover { background: rgba(249,115,22,0.8); }
+
+    /* PIN Modal */
+    .pin-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .pin-modal.active { display: flex; }
+
+    .pin-modal-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 4px;
+      background: linear-gradient(90deg, #f97316, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .pin-modal-subtitle {
+      color: #64748b;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: -16px;
+    }
+
+    .pin-dots {
+      display: flex;
+      gap: 16px;
+    }
+
+    .pin-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid #475569;
+      background: transparent;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .pin-dot.filled {
+      background: #f97316;
+      border-color: #f97316;
+    }
+
+    .pin-dot.error {
+      background: #ef4444;
+      border-color: #ef4444;
+    }
+
+    .pin-pad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .pin-key {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 1px solid #334155;
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .pin-key:hover { background: rgba(249,115,22,0.2); }
+    .pin-key:active { background: rgba(249,115,22,0.4); }
+
+    .pin-key.delete { font-size: 1rem; color: #94a3b8; }
+    .pin-key.empty { visibility: hidden; }
+
+    .pin-cancel {
+      color: #475569;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 8px 16px;
+      transition: color 0.2s ease;
+    }
+
+    .pin-cancel:hover { color: #94a3b8; }
+
+    @keyframes shake-pin {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-8px); }
+      80% { transform: translateX(8px); }
+    }
+
+    .pin-dots.shake { animation: shake-pin 0.4s ease; }
   </style>
 </head>
 <body>
@@ -246,7 +366,6 @@
         <div class="tile-name">The Note</div>
       </div>
 
-      <!-- Coming Soon: drop your own trailer URL in data-src when ready -->
       <div class="tile tile-coming-soon" data-type="own" data-src="">
         <div class="coming-soon-icon">🎬</div>
         <div class="coming-soon-text">Your trailer coming soon</div>
@@ -269,10 +388,10 @@
         <div class="tile-name">The Note</div>
       </div>
 
-      <div class="tile" data-type="own" data-src="https://cbanala-videos.b-cdn.net/SP%20%5BD-01%5D%2002.15.26.MP4">
+      <div class="tile" data-type="own" data-src="https://cbanala-videos.b-cdn.net/SP%20%5BD-01%5D%2002.15.26.MP4" data-pin="true">
         <div class="tile-bg" style="background-image: url('silent-pour-poster.png');"></div>
         <div class="tile-overlay"></div>
-        <div class="tile-badge badge-film">Full Film</div>
+        <div class="tile-badge badge-locked">🔒 Private</div>
         <div class="tile-play">▶</div>
         <div class="tile-name">Silent Pour</div>
       </div>
@@ -280,39 +399,155 @@
     </div>
   </div>
 
+  <!-- PIN Modal -->
+  <div class="pin-modal" id="pinModal">
+    <div class="pin-modal-title">Enter PIN</div>
+    <div class="pin-modal-subtitle">Private screening</div>
+    <div class="pin-dots" id="pinDots">
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+    </div>
+    <div class="pin-pad">
+      <div class="pin-key" data-digit="1">1</div>
+      <div class="pin-key" data-digit="2">2</div>
+      <div class="pin-key" data-digit="3">3</div>
+      <div class="pin-key" data-digit="4">4</div>
+      <div class="pin-key" data-digit="5">5</div>
+      <div class="pin-key" data-digit="6">6</div>
+      <div class="pin-key" data-digit="7">7</div>
+      <div class="pin-key" data-digit="8">8</div>
+      <div class="pin-key" data-digit="9">9</div>
+      <div class="pin-key empty"></div>
+      <div class="pin-key" data-digit="0">0</div>
+      <div class="pin-key delete" id="pinDelete">⌫</div>
+    </div>
+    <div class="pin-cancel" id="pinCancel">Cancel</div>
+  </div>
+
   <script type="module">
     import { animate, stagger } from 'https://cdn.jsdelivr.net/npm/motion@11/+esm';
 
     animate('.header', { opacity: [0, 1], y: [-20, 0] }, { duration: 0.6, easing: 'ease-out' });
-
     animate('.section', { opacity: [0, 1], y: [30, 0] }, {
       duration: 0.5,
       delay: stagger(0.15, { start: 0.3 }),
       easing: 'ease-out',
     });
 
+    // --- Fullscreen helper ---
+    function addFullscreenBtn(tile) {
+      const btn = document.createElement('button');
+      btn.className = 'fullscreen-btn';
+      btn.innerHTML = '⛶';
+      btn.title = 'Fullscreen';
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const el = tile;
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+        else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
+      });
+      tile.appendChild(btn);
+    }
+
+    // --- Play a tile ---
+    function playTile(tile) {
+      const type = tile.dataset.type;
+      const id = tile.dataset.id;
+      const src = tile.dataset.src;
+
+      if (type === 'youtube' && id) {
+        tile.classList.add('playing');
+        tile.innerHTML = `<iframe
+          src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&origin=https://cbanala.github.io"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+          allowfullscreen>
+        </iframe>`;
+        addFullscreenBtn(tile);
+      } else if (type === 'own' && src) {
+        tile.classList.add('playing');
+        tile.innerHTML = `<video
+          src="${src}"
+          controls
+          autoplay
+          playsinline
+          x-webkit-airplay="allow">
+        </video>`;
+        addFullscreenBtn(tile);
+      }
+    }
+
+    // --- PIN logic ---
+    const CORRECT_PIN = '6327';
+    let currentPin = '';
+    let pendingTile = null;
+    const modal = document.getElementById('pinModal');
+    const dots = document.querySelectorAll('.pin-dot');
+    const pinDots = document.getElementById('pinDots');
+
+    function updateDots() {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('filled', i < currentPin.length);
+        dot.classList.remove('error');
+      });
+    }
+
+    function resetPin() {
+      currentPin = '';
+      updateDots();
+    }
+
+    function showError() {
+      dots.forEach(dot => dot.classList.add('error'));
+      pinDots.classList.add('shake');
+      setTimeout(() => {
+        pinDots.classList.remove('shake');
+        resetPin();
+      }, 500);
+    }
+
+    document.querySelectorAll('.pin-key[data-digit]').forEach(key => {
+      key.addEventListener('click', () => {
+        if (currentPin.length >= 4) return;
+        currentPin += key.dataset.digit;
+        updateDots();
+        if (currentPin.length === 4) {
+          setTimeout(() => {
+            if (currentPin === CORRECT_PIN) {
+              modal.classList.remove('active');
+              resetPin();
+              if (pendingTile) playTile(pendingTile);
+            } else {
+              showError();
+            }
+          }, 150);
+        }
+      });
+    });
+
+    document.getElementById('pinDelete').addEventListener('click', () => {
+      currentPin = currentPin.slice(0, -1);
+      updateDots();
+    });
+
+    document.getElementById('pinCancel').addEventListener('click', () => {
+      modal.classList.remove('active');
+      resetPin();
+      pendingTile = null;
+    });
+
+    // --- Tile click handler ---
     document.querySelectorAll('.tile').forEach(tile => {
       tile.addEventListener('click', () => {
-        const type = tile.dataset.type;
-        const id = tile.dataset.id;
-        const src = tile.dataset.src;
-
-        if (type === 'youtube' && id) {
-          tile.classList.add('playing');
-          tile.innerHTML = `<iframe
-            src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&origin=https://cbanala.github.io"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-            allowfullscreen>
-          </iframe>`;
-        } else if (type === 'own' && src) {
-          tile.classList.add('playing');
-          tile.innerHTML = `<video
-            src="${src}"
-            controls
-            autoplay
-            playsinline
-            x-webkit-airplay="allow">
-          </video>`;
+        if (tile.classList.contains('playing')) return;
+        if (tile.dataset.pin === 'true') {
+          pendingTile = tile;
+          resetPin();
+          modal.classList.add('active');
+        } else {
+          playTile(tile);
         }
       });
     });
