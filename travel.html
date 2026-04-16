@@ -183,6 +183,30 @@
       border: 0;
       border-radius: 16px;
     }
+
+    /* Fullscreen button overlay */
+    .fullscreen-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      border: none;
+      color: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .fullscreen-btn:hover { background: rgba(124,58,237,0.8); }
   </style>
 </head>
 <body>
@@ -268,8 +292,23 @@
       easing: 'ease-out',
     });
 
+    function addFullscreenBtn(tile) {
+      const btn = document.createElement('button');
+      btn.className = 'fullscreen-btn';
+      btn.innerHTML = '⛶';
+      btn.title = 'Fullscreen';
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (tile.requestFullscreen) tile.requestFullscreen();
+        else if (tile.webkitRequestFullscreen) tile.webkitRequestFullscreen();
+        else if (tile.mozRequestFullScreen) tile.mozRequestFullScreen();
+      });
+      tile.appendChild(btn);
+    }
+
     document.querySelectorAll('.tile').forEach(tile => {
       tile.addEventListener('click', () => {
+        if (tile.classList.contains('playing')) return;
         const type = tile.dataset.type;
         const id = tile.dataset.id;
         const src = tile.dataset.src;
@@ -281,6 +320,7 @@
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
             allowfullscreen>
           </iframe>`;
+          addFullscreenBtn(tile);
         } else if (type === 'own' && src) {
           tile.classList.add('playing');
           tile.innerHTML = `<video
@@ -290,6 +330,7 @@
             playsinline
             x-webkit-airplay="allow">
           </video>`;
+          addFullscreenBtn(tile);
         }
       });
     });
